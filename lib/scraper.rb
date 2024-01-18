@@ -1,6 +1,7 @@
 require "nokogiri"
 require "httparty"
 require "byebug"
+require_relative "./country.rb"
 
 module Scraper
   INDEX_URL = 'https://www.scrapethissite.com/pages/simple/'
@@ -17,6 +18,7 @@ module Scraper
       area = country.css(".country-area").text.strip
       #debugger; # <---- Add this line
       puts "#{name} #{capital} #{population} #{area}"
+      Country.new(name, capital, population, area)
   end
 end
 end
